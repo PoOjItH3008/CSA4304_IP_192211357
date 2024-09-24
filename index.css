@@ -1,0 +1,510 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.logo {
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.logo-image {
+    width: 50px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between logo and text */
+}
+
+/* Header and Navigation */
+header {
+    background: #333;
+    color: white;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 0.95;
+    transition: background 0.3s ease;
+}
+
+header:hover {
+    background: #444;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px; /* Add padding for better spacing */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: navSlide 0.5s ease forwards;
+}
+
+nav ul li:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+nav ul li:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+nav ul li:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes navSlide {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff6600;
+}
+
+.logo h1 {
+    font-size: 28px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: url('bd.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center auto;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content {
+    max-width: 700px;
+    padding: 20px; /* Add padding for spacing */
+}
+
+.hero-section h2 {
+    text-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: fadeInUp 1.2s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-section p {
+    text-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background: #ff6600;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn:hover {
+    background: #e65a00;
+    transform: scale(1.1);
+}
+
+/* Car Showcase Section */
+.cars-section {
+    padding: 80px 20px; /* Increased padding for better separation */
+    text-align: center;
+    background: url('featured.png') no-repeat center center/cover;
+    background-color: #f4f4f4;
+    color: white;
+    opacity: 0.95;
+    animation: fadeInSection 1s ease-in;
+}
+
+@keyframes fadeInSection {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.cars-section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    animation: bounceIn 1s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+    80% {
+        transform: scale(0.95);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Car Grid */
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    padding: 0 20px; /* Add padding for neatness */
+    max-width: 1200px; /* Center grid by limiting max width */
+    margin: 0 auto; /* Center grid on the page */
+}
+
+/* Car Card Styling */
+.car-card {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.car-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.car-card img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.car-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.car-card p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.car-card a {
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.car-card a:hover {
+    background: #555;
+}
+
+/* Services Section */
+
+.services-section {
+    padding: 80px 20px;
+    text-align: center;
+    background: url('service.avif') no-repeat center center/cover;
+    background-color: #f4f4f4;
+    color: white;
+    animation: slideInFromLeft 1.5s ease;
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.services-section h2 {
+    text-shadow: rgba(0, 0, 0, 0.5);
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: whitesmoke;
+}
+
+/* Service Grid */
+.service-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the grid */
+    padding: 0 20px; /* Add padding for neatness */
+}
+
+/* Service Card Styling */
+/* Service Card Styling */
+.service-card {
+    color: black;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; 
+    image :auto-fit;/* Centers content vertically */
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+.service-card img {
+    width: 100%; /* Make the image take the full width of the card */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px 5px 0 0; /* Round the top corners of the image */
+}
+
+
+
+
+
+/* About Us Section */
+.about-section {
+    padding: 80px 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('about-bg.jpg') center/cover;
+    color: white;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff6600;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.about-section p {
+    font-size: 18px;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 80px 20px;
+    background-color: #444; /* Darker background for contrast */
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+/* Heading Style */
+.contact-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ff6600; /* Highlight color */
+}
+
+/* Paragraph Style */
+.contact-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Contact Form Styling */
+.contact-form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items */
+}
+
+/* Input and Textarea Styles */
+.contact-section input,
+.contact-section textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: border 0.3s ease;
+}
+
+/* Focus Effect */
+.contact-section input:focus,
+.contact-section textarea:focus {
+    border: 2px solid #ff6600; /* Highlight on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Button Styles */
+.contact-section button {
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px; /* Space above button */
+}
+
+/* Button Hover Effect */
+.contact-section button:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+
+/* Decorative Elements */
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: rgba(255, 102, 0, 0.5); /* Subtle highlight */
+    z-index: 0;
+}
+
+/* Dropdown for Cars and Services */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Show dropdown content on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+/* Change background on hover */
+.dropdown-content a:hover {
+    background-color: rgb(69, 69, 69);
+}
+
+/* Change color of dropbtn on hover */
+.dropdown:hover .dropbtn {
+    color: #ffffff;
+}
+footer{
+    text-align:center ;
+}

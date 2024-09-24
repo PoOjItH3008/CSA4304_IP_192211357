@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attractive QR Code Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .qr-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 200px; /* Fixed width for consistency */
+            transition: transform 0.3s;
+        }
+
+        .qr-card:hover {
+            transform: scale(1.05);
+        }
+
+        .qr-code {
+            margin: 0 auto;
+            max-width: 100%; /* Responsive */
+        }
+
+        .qr-label {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Scan the QR Codes to contact us</h1>
+
+    <div class="qr-container">
+        <div class="qr-card">
+            <img src="contactqr.png" alt="Contact QR Code" class="qr-code">
+            <div class="qr-label">Contact 📱</div>
+        </div>
+        
+        <div class="qr-card">
+            <img src="mailqr.png" alt="Email QR Code" class="qr-code">
+            <div class="qr-label">Email 📧</div>
+        </div>
+        
+        <div class="qr-card">
+            <img src="locationqr.png" alt="Address QR Code" class="qr-code">
+            <div class="qr-label">Address 📍</div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Form</title>
+    <link rel="stylesheet" href="testdrive.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.avif" alt="Car Rentals Logo" class="logo-image">
+                <h1>Car Rentals</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#cars" class="dropbtn">Cars</a>
+                        <div class="dropdown-content">
+                            <a href="sedan.html">Sedan</a>
+                            <a href="suv.html">SUV</a>
+                            <a href="hatchback.html">Hatchback</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#services" class="dropbtn">Services</a>
+                        <div class="dropdown-content">
+                            <a href="#">Online Booking</a>
+                            <a href="testdrive.html">Test Drive</a>
+                            <a href="#">24/7 Support</a>
+                        </div>
+                    </li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Rental Form Section -->
+    <section id="test-drive" class="appointment-section">
+        <h2>Rent Your Desired Car Now</h2>
+        <form action="#" method="post" class="appointment-form" onsubmit="return validateForm()">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required pattern="\d{10}">
+
+            <label for="car">Select Car Type:</label>
+            <select id="car" name="car" required onchange="updateModelOptions()">
+                <option value="">--Select Car Type--</option>
+                <option value="suv">SUV</option>
+                <option value="sedan">Sedan</option>
+                <option value="hatchback">Hatchback</option>
+            </select>
+
+            <label for="model">Select Car Model:</label>
+            <select id="model" name="model" required>
+                <option value="">--Select Car Model--</option>
+            </select>
+
+            <label for="days">Number of Days:</label>
+            <input type="number" id="days" name="days" required min="1" value="1" onchange="calculateTotalCost()">
+
+            <!-- Display Total Cost -->
+            <label for="total-cost">Total Rental Cost:</label>
+            <input type="text" id="total-cost" name="total-cost" readonly>
+
+            <!-- Payment Details Section -->
+            <h3>Payment Details</h3>
+
+            <label for="card-name">Cardholder Name:</label>
+            <input type="text" id="card-name" name="card-name" required>
+
+            <label for="card-number">Card Number:</label>
+            <input type="text" id="card-number" name="card-number" required pattern="\d{16}" placeholder="1234 5678 9123 4567">
+
+            <label for="expiry-date">Expiration Date:</label>
+            <input type="month" id="expiry-date" name="expiry-date" required>
+
+            <label for="cvv">CVV:</label>
+            <input type="text" id="cvv" name="cvv" required pattern="\d{3}" placeholder="123">
+
+            <button type="submit" class="btn-submit">Rent Now</button>
+        </form>
+    </section>
+
+    <script>
+        const carPrices = {
+            suv: 3500,        // Price per day for SUV
+            sedan: 2500,       // Price per day for Sedan
+            hatchback: 1800    // Price per day for Hatchback
+        };
+
+        function updateModelOptions() {
+            const carSelect = document.getElementById("car");
+            const modelSelect = document.getElementById("model");
+            const selectedCar = carSelect.value;
+
+            // Clear existing options
+            modelSelect.innerHTML = '<option value="">--Select Car Model--</option>';
+
+            // Define models for each car type
+            const carModels = {
+                suv: ['Tata Curvv', 'Mahindra Scorpio', 'Toyota Fortuner', 'Hyundai Creta'],
+                sedan: ['Maruti Dzire', 'Hyundai Verna', 'Honda City', 'Volkswagen Virtus'],
+                hatchback: ['Maruti Swift', 'Maruti Baleno', 'Tata Tiago', 'Hyundai i20']
+            };
+
+            // Populate models based on selected car type
+            if (selectedCar in carModels) {
+                carModels[selectedCar].forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model.toLowerCase().replace(/\s+/g, '-'); // Optional: format value
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+            }
+
+            // Recalculate total cost when car type changes
+            calculateTotalCost();
+        }
+
+        function calculateTotalCost() {
+            const carType = document.getElementById("car").value;
+            const days = parseInt(document.getElementById("days").value) || 1;
+            const totalCostField = document.getElementById("total-cost");
+
+            if (carType && days > 0) {
+                const costPerDay = carPrices[carType];
+                const totalCost = costPerDay * days;
+                totalCostField.value = "₹" + totalCost.toFixed(2);
+            } else {
+                totalCostField.value = "$0.00";
+            }
+        }
+
+        function validateForm() {
+            const phoneInput = document.getElementById("phone").value;
+
+            // Validate phone number
+            const phoneNumber = phoneInput.replace(/\D/g, '');
+            if (phoneNumber.length !== 10) {
+                alert("Phone number must be exactly 10 digits.");
+                return false;
+            }
+
+            // Validate total cost
+            const totalCost = document.getElementById("total-cost").value;
+            if (totalCost === "$0.00") {
+                alert("Please select a valid car type and number of days.");
+                return false;
+            }
+
+            alert("You can now pick up the car at your doorstep 🏎️");
+            window.location.href = 'index.html';
+            return false;
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Car Rentals. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

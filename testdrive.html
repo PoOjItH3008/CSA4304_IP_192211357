@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Drive Appointment</title>
+    <link rel="stylesheet" href="testdrive.css">
+</head>
+<body>
+
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.avif" alt="Car Rentals Logo" class="logo-image">
+                <h1>Car Rentals</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    
+                    <!-- Dropdown for Cars -->
+                    <li class="dropdown">
+                        <a href="#cars" class="dropbtn">Cars</a>
+                        <div class="dropdown-content">
+                            <a href="sedan.html">Sedan</a>
+                            <a href="suv.html">SUV</a>
+                            <a href="hatchback.html">Hatchback</a>
+                        </div>
+                    </li>
+    
+                    <!-- Dropdown for Services -->
+                    <li class="dropdown">
+                        <a href="#services" class="dropbtn">Services</a>
+                        <div class="dropdown-content">
+                            <a href="#">Online Booking</a>
+                            <a href="testdrive.html">Test Drive</a>
+                            <a href="#">24/7 Support</a>
+                        </div>
+                    </li>
+    
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <!-- Test Drive Appointment Section -->
+<section id="test-drive" class="appointment-section">
+    <h2>Schedule Your Test Drive</h2>
+    <form action="#" method="post" class="appointment-form" onsubmit="return validateForm()">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required pattern ="\d{10}">
+
+        <label for="car">Select Car Type:</label>
+        <select id="car" name="car" required onchange="updateModelOptions()">
+            <option value="">--Select Car Type--</option>
+            <option value="suv">SUV</option>
+            <option value="sedan">Sedan</option>
+            <option value="hatchback">Hatchback</option>
+        </select>
+
+        <label for="model">Select Car Model:</label>
+        <select id="model" name="model" required>
+            <option value="">--Select Car Model--</option>
+        </select>
+
+        <label for="date">Preferred Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Preferred Time:</label>
+        <input type="time" id="time" name="time" required>
+
+        <button type="submit" class="btn-submit">Schedule Test Drive</button>
+    </form>
+</section>
+
+<script>
+    function updateModelOptions() {
+        const carSelect = document.getElementById("car");
+        const modelSelect = document.getElementById("model");
+        const selectedCar = carSelect.value;
+
+        // Clear existing options
+        modelSelect.innerHTML = '<option value="">--Select Car Model--</option>';
+
+        // Define models for each car type
+        const carModels = {
+            suv: ['Tata Curvv', 'Mahindra Scorpio', 'Toyota Fortuner','Hyundai Creta'],
+            sedan: ['Maruti Dzire', 'Hyundai Verna', 'Honda City','Volkswagen Virtus'],
+            hatchback: ['Maruti Swift', 'Maruti Baleno', 'Tata Tiago','Hyundai i20']
+        };
+
+        // Populate models based on selected car type
+        if (selectedCar in carModels) {
+            carModels[selectedCar].forEach(model => {
+                const option = document.createElement('option');
+                option.value = model.toLowerCase().replace(/\s+/g, '-'); // Optional: format value
+                option.textContent = model;
+                modelSelect.appendChild(option);
+            });
+        }
+    }
+</script>
+<script>
+    function validateForm() {
+        const phoneInput = document.getElementById("phone").value;
+
+        // Remove any non-digit characters
+        const phoneNumber = phoneInput.replace(/\D/g, '');
+
+        if (phoneNumber.length !== 10) {
+            alert("Phone number must be exactly 10 digits.");
+            return false; // Prevent form submission
+        }
+        alert(" your test drive has been scheduled successfully 🏎️");
+        window.location.href = 'index.html';
+
+        return false; // Allow form submission
+    }
+</script>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Car Rentals. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

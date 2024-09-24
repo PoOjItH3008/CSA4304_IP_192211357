@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUV Showcase</title>
+    <link rel="stylesheet" href="suv.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="logo.avif" alt="Car Rentals Logo" class="logo-image">
+                <h1>Car Rentals</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    
+                    <!-- Dropdown for Cars -->
+                    <li class="dropdown">
+                        <a href="#SUV's" class="dropbtn">Cars</a>
+                        <div class="dropdown-content">
+                            <a href="sedan.html">Sedan</a>
+                            <a href="suv.html">SUV</a>
+                            <a href="hatchback.html">Hatchback</a>
+                        </div>
+                    </li>
+    
+                    <!-- Dropdown for Services -->
+                    <li class="dropdown">
+                        <a href="#services" class="dropbtn">Services</a>
+                        <div class="dropdown-content">
+                            <a href="#">Online Booking</a>
+                            <a href="testdrive.html">Test Drive</a>
+                            <a href="#">24/7 Support</a>
+                        </div>
+                    </li>
+    
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Showcase Section -->
+    <section id="suvs" class="car-showcase-section">
+        <h2>Available SUVs</h2>
+        <div class="car-grid">
+            <!-- SUV Card -->
+            <div class="car-card">
+                <img src="tata(suv1).webp" alt="SUV Model A">
+                <h3>Tata Curvv</h3>
+                <p>Price: $40,000</p>
+                <button class="btn-details">View Details</button>
+                <button class="btn-buy"onclick="window.location.href='rent.html';">Rent Now</button>
+            </div>
+
+            <!-- SUV Card -->
+            <div class="car-card">
+                <img src="scorpio(suv2).webp" alt="SUV Model B">
+                <h3>Mahindra Scorpio</h3>
+                <p>Price: $50,000</p>
+                <button class="btn-details">View Details</button>
+                <button class="btn-buy"onclick="window.location.href='rent.html';">Rent Now</button>
+            </div>
+
+            <!-- SUV Card -->
+            <div class="car-card">
+                <img src="fortuner(suv3).webp" alt="SUV Model C">
+                <h3>Toyota Fortuner</h3>
+                <p>Price: $55,000</p>
+                <button class="btn-details">View Details</button>
+                <button class="btn-buy"onclick="window.location.href='rent.html';">Rent Now</button>
+            </div>
+
+            <!-- SUV Card -->
+            <div class="car-card">
+                <img src="creta(suv4).webp" alt="SUV Model D">
+                <h3>Hyundai Creta</h3>
+                <p>Price: $60,000</p>
+                <button class="btn-details">View Details</button>
+                <button class="btn-buy" onclick="window.location.href='rent.html';">Rent Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Car Rentals. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
